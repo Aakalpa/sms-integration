@@ -9,11 +9,14 @@
 
 <body>
     <form action="{{ url_for('send_status') }}" method="post">
-        <input type="text" name="send_ph_no" placeholder="enter phone number to send">
-        <input type="text" name="receive_ph_no" placeholder="enter phone number to receive">
-        <input tpye="text" name="msg" placeholder="enter message">
+        Phone number to send must be a twilio provided number<br>
+        <input type="text" name="send_ph_no" placeholder="enter phone number to send"><br>
+        Receiving phone number is you own mobile number<br>
+        <input type="text" name="receive_ph_no" placeholder="enter phone number to receive"><br>
+        <input tpye="text" name="msg" placeholder="enter message"><br>
         <button> Submit </button>
     </form>
+    <a href="{{ url_for('home') }}">Go back to home page</a>
 </body>
 
 </html>

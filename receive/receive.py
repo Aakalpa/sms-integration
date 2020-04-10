@@ -7,8 +7,11 @@ from twilio.twiml.messaging_response import MessagingResponse
 app = Flask(__name__)
 
 
+@app.route("/",methods = ["POST","GET"])
+def home():
+    return render_template("home.html")
 
-@app.route("/send")
+@app.route("/send",methods = ["POST"])
 def send():
     return render_template("send.html")
 
@@ -33,8 +36,8 @@ def send_status():
     sid = message.sid
     return render_template("sendstatus.html",send_ph_no=send_ph_no,receive_ph_no=receive_ph_no,msg=msg,sid=sid)
 
-@app.route("/sms", methods=["GET", "POST"])
-def sms():
+@app.route("/receive", methods=["POST"])
+def receive():
     """Respond to incoming messages with a friendly SMS."""
     # Start our response
     resp = MessagingResponse()
@@ -43,12 +46,12 @@ def sms():
 
     # print("form", request.form)
     received_info = request.form
-    # return none
-    return render_template("receive.html",received_msg = received_info)
+    for key, value in received_info.items() :
+        print (key, value)
+    l = len(received_info)
+    return render_template("receive.html",received_msg = received_info,l=l)
 
-@app.route("/", methods=["GET", "POST"])
-def index():
-    return "hello world"
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port = 5001,debug=True)

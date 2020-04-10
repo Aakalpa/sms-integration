@@ -8,11 +8,17 @@
 </head>
 
 <body>
+    {% if l<=1 %}
+    Please send a message first
+    {% else %}
     <ul>
-        {% for i in received_info %}
-        <li>{{ i }}</li>
+        {% for i in received_msg %}
+        <li>{{ i }} {{ received_msg[i] }}</li>
         {% endfor %}
     </ul>
+    {% endif %}
+    <br>
+    <a href="{{ url_for('home') }}">Go back to home page</a>
 
 </body>
 
