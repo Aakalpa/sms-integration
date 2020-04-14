@@ -9,6 +9,8 @@
 
 <body>
     <form action="{{ url_for('send_status') }}" method="post">
+        <input type = "text" name = "account_sid" placeholder = "enter account sid"><br>
+        <input type = "password" name = "auth_token" placeholder = "enter token"><br>
         Phone number to send must be a twilio provided number<br>
         <input type="text" name="send_ph_no" placeholder="enter phone number to send"><br>
         Receiving phone number is you own mobile number<br>

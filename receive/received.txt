@@ -1,0 +1,20 @@
+
+ToCountry----US
+ToState----VA
+SmsMessageSid----SM52fd9e4c7d6d0301df1169d3de50880f
+NumMedia----0
+ToCity----
+FromZip----
+SmsSid----SM52fd9e4c7d6d0301df1169d3de50880f
+FromState----
+SmsStatus----received
+FromCity----
+Body----From Roshan
+FromCountry----NP
+To----+15402742780
+ToZip----
+NumSegments----1
+MessageSid----SM52fd9e4c7d6d0301df1169d3de50880f
+AccountSid----AC803f894ec5fd72b07ff5873fc9452913
+From----+9779813966073
+ApiVersion----2010-04-01

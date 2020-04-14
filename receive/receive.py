@@ -19,6 +19,8 @@ def send():
 def send_status():
     account_sid = "AC803f894ec5fd72b07ff5873fc9452913"
     auth_token = "23af0123f39cad286bfa7eb4df19029f"
+    account_sid = request.form.get("account_sid")
+    auth_token = request.form.get("auth_token")
     client = Client(account_sid, auth_token)
 
     send_ph_no = request.form.get("send_ph_no")
@@ -36,8 +38,8 @@ def send_status():
     sid = message.sid
     return render_template("sendstatus.html",send_ph_no=send_ph_no,receive_ph_no=receive_ph_no,msg=msg,sid=sid)
 
-@app.route("/receive", methods=["POST"])
-def receive():
+@app.route("/sms", methods=["GET","POST"])
+def sms():
     """Respond to incoming messages with a friendly SMS."""
     # Start our response
     resp = MessagingResponse()
@@ -46,10 +48,17 @@ def receive():
 
     # print("form", request.form)
     received_info = request.form
-    for key, value in received_info.items() :
-        print (key, value)
-    l = len(received_info)
-    return render_template("receive.html",received_msg = received_info,l=l)
+    with open("received.txt","a") as f:
+    	for key, value in received_info.items() :
+    	    f.write(key + "----" + value +"\n")
+    for key, value in received_info.items():
+    	print(key,value)
+
+@app.route("/receive",methods = ["GET","POST"])
+def receive():
+    with open("received.txt","r") as f:
+    	x = f.readlines()
+    return render_template("receive.html",received_msg = x)
 
 
 
