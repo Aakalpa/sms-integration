@@ -63,8 +63,7 @@ def sms():
 
 @app.route("/receive",methods = ["GET","POST"])
 def receive():
-    with open('received.txt') as json_file:
-        temp = json.load(json_file)
+    temp = [json.loads(line) for line in open('received.txt','r')]
     return json.dumps(temp)
 
 
