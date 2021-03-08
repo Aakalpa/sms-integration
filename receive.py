@@ -4,6 +4,10 @@ from flask import Flask, request, render_template, jsonify
 import json
 from twilio.rest import Client
 from twilio.twiml.messaging_response import MessagingResponse
+import environ
+env = environ.Env()
+
+environ.Env.read_env()
 
 app = Flask(__name__)
 
@@ -18,8 +22,8 @@ def send():
 
 @app.route('/sendstatus',methods = ["POST"])
 def send_status():
-    account_sid = "AC803f894ec5fd72b07ff5873fc9452913"
-    auth_token = "23af0123f39cad286bfa7eb4df19029f"
+    account_sid = env("account_sid")
+    auth_token = env("auth_token")
     account_sid = request.form.get("account_sid")
     auth_token = request.form.get("auth_token")
     client = Client(account_sid, auth_token)
